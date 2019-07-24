@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+	<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 25, 2019 14:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = now - countDownDate;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + " ימים " + hours + " שעות "
+  + minutes + " דקות ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+							<script>
+function initComparisons() {
+  var x, i;
+  /*find all elements with an "overlay" class:*/
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    /*once for each "overlay" element:
+    pass the "overlay" element as a parameter when executing the compareImages function:*/
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    /*get the width and height of the img element*/
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    /*set the width of the img element to 50%:*/
+    img.style.width = (w / 2) + "px";
+    /*create slider:*/
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    /*insert slider*/
+    img.parentElement.insertBefore(slider, img);
+    /*position the slider in the middle:*/
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    /*execute a function when the mouse button is pressed:*/
+    slider.addEventListener("mousedown", slideReady);
+    /*and another function when the mouse button is released:*/
+    window.addEventListener("mouseup", slideFinish);
+    /*or touched (for touch screens:*/
+    slider.addEventListener("touchstart", slideReady);
+    /*and released (for touch screens:*/
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      /*prevent any other actions that may occur when moving over the image:*/
+      e.preventDefault();
+      /*the slider is now clicked and ready to move:*/
+      clicked = 1;
+      /*execute a function when the slider is moved:*/
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      /*the slider is no longer clicked:*/
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      /*if the slider is no longer clicked, exit this function:*/
+      if (clicked == 0) return false;
+      /*get the cursor's x position:*/
+      pos = getCursorPos(e)
+      /*prevent the slider from being positioned outside the image:*/
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      /*execute a function that will resize the overlay image according to the cursor:*/
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      /*get the x positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x coordinate, relative to the image:*/
+      x = e.pageX - a.left;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      /*resize the image:*/
+      img.style.width = x + "px";
+      /*position the slider:*/
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+</script>
+
+							<style>
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 200px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+
+
+}
+</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" pe="image/png" href="../photos/favicon.ico"/>
+
+    <title>Brumadinho</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script language="JavaScript">
+      <!--
+      function worldClock(zone, region){
+      var dst = 0
+      var time = new Date()
+      var gmtMS = time.getTime() + (time.getTimezoneOffset() * 60000)
+      var gmtTime = new Date(gmtMS)
+      var day = gmtTime.getDate()
+      var month = gmtTime.getMonth()
+      var year = gmtTime.getYear()
+      if(year < 1000){
+      year += 1900
+      }
+      var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August",
+      				"September", "October", "November", "December")
+      var monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31")
+      if (year%4 == 0){
+      monthDays = new Array("31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31")
+      }
+      if(year%100 == 0 && year%400 != 0){
+      monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31")
+      }
+
+      var hr = gmtTime.getHours() + zone
+      var min = gmtTime.getMinutes()
+      var sec = gmtTime.getSeconds()
+
+      if (hr >= 24){
+      hr = hr-24
+      day -= -1
+      }
+      if (hr < 0){
+      hr -= -24
+      day -= 1
+      }
+      if (hr < 10){
+      hr = " " + hr
+      }
+      if (min < 10){
+      min = "0" + min
+      }
+      if (sec < 10){
+      sec = "0" + sec
+      }
+      if (day <= 0){
+      if (month == 0){
+      	month = 11
+      	year -= 1
+      	}
+      	else{
+      	month = month -1
+      	}
+      day = monthDays[month]
+      }
+      if(day > monthDays[month]){
+      	day = 1
+      	if(month == 11){
+      	month = 0
+      	year -= -1
+      	}
+      	else{
+      	month -= -1
+      	}
+      }
+      if (region == "SAmerica"){
+      	var startDST = new Date()
+      	var endDST = new Date()
+      	startDST.setMonth(9)
+      	startDST.setHours(0)
+      	startDST.setDate(1)
+      	var dayDST = startDST.getDay()
+      	if (dayDST != 0){
+      		startDST.setDate(22-dayDST)
+      		}
+      		else{
+      		startDST.setDate(15)
+      		}
+      	endDST.setMonth(1)
+      	endDST.setHours(11)
+      	endDST.setDate(1)
+      	dayDST = endDST.getDay()
+      	if (dayDST != 0){
+      		endDST.setDate(21-dayDST)
+      		}
+      		else{
+      		endDST.setDate(14)
+      		}
+      	var currentTime = new Date()
+      	currentTime.setMonth(month)
+      	currentTime.setYear(year)
+      	currentTime.setDate(day)
+      	currentTime.setHours(hr)
+      	if(currentTime >= startDST || currentTime < endDST){
+      		dst = 1
+      		}
+      }
+
+
+      if (dst == 1){
+      	hr -= -1
+      	if (hr >= 24){
+      	hr = hr-24
+      	day -= -1
+      	}
+      	if (hr < 10){
+      	hr = " " + hr
+      	}
+      	if(day > monthDays[month]){
+      	day = 1
+      	if(month == 11){
+      	month = 0
+      	year -= -1
+      	}
+      	else{
+      	month -= -1
+      	}
+      	}
+      return monthArray[month] + " " + day + ", " + year + "<br>" + hr + ":" + min + ":" + sec + " DST"
+      }
+      else{
+      return monthArray[month] + " " + day + ", " + year + "<br>" + hr + ":" + min + ":" + sec
+      }
+      }
+
+      function worldClockZone(){
+      document.getElementById("SaoPaulo").innerHTML = worldClock(-3, "SAmerica")
+
+      setTimeout("worldClockZone()", 1000)
+      }
+      window.onload=worldClockZone;
+
+      //-->
+      </script>
+
+
+			<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+			</script>
+
+
+
+      <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+      </script>
+      <style>
+      #block-scroll{
+      width: 100%;
+      height: 300px;
+      overflow: scroll;
+      }
+
+			#demo {
+				direction: rtl
+			}
+      </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Brazil Dam Collapse - Brumadinho</a>
+            </div>
+            <!-- /.navbar-header -->
+            <a class="weatherwidget-io" href="https://forecast7.com/en/n23d59n46d82/horizontal-park/" data-label_1="Belo Horizonte" data-label_2="WEATHER" data-theme="blue-mountains" >BELO HORIZONTE WEATHER</a>
+
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+
+                        <li class="divider"></li>
+                        <li>
+                            <a target="_blank" class="text-center" href="https://www.google.co.il/search?q=brumadinho&source=lnms&tbm=nws&sa=X&ved=0ahUKEwju4-D124zgAhWMsqQKHRTpD18Q_AUIECgD&biw=1200&bih=664">
+                                <strong>See All News</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <!-- NAVBAR -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Homepage</a>
+                        </li>
+                        <li>
+                            <a href="airports.html"><i class="fa fa-plane fa-fw"></i>Airports</a>
+                        </li>
+                        <li>
+                            <a href="hospitals.html"><i class="fa fa-h-square fa-fw"></i>Hospitals</a>
+                        </li>
+                        <li>
+                            <a href="poi.html"><i class="fa fa-plus fa-fw"></i>Points of Interest</a>
+                        </li>
+                        <li>
+                          <a href="social.html"><i class="fa fa-share-square fa-fw"></i>Social Networks</a>
+                        </li>
+                        <li>
+                          <a href="upload-updates.html"><i class="fa fa-share-square fa-fw"></i>Upload updates</a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- TITLE -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Brazil Dam Collapse</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+
+              <!-- TIME -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row" style="padding: 15px; text-align: center">
+                              <span id="SaoPaulo" style="font-weight: bold; font-size: 20px"></span>
+                            </div>
+                        </div>
+                            <div class="panel-footer">
+                                <span class="pull-right" style="color: #337ab7">שעון מקומי</span>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- CURRENCY -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading" style="background-color: white">
+                            <div class="row" dir=rtl style="text-align: center; padding: 8px">
+
+															<span id="SaoPaulo" style="font-weight: bold; font-size: 24px"><span style="color: red">הרוגים: 99 </span><span style="color: #ffd700">	נעדרים: 259   </span><span style="color: orange">פצועים: 22 </span> </span>
+                            </div>
+                        </div>
+                            <div class="panel-footer">
+                                <span class="pull-right" style="color: #d9534f">סטטוס</span>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- POPULATION -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+
+                                <a class="weatherwidget-io" width="100%" height="100%" href="https://forecast7.com/en/n4d10n38d49/horizonte/" data-label_1="HORIZONTE" data-label_2="WEATHER" data-mode="Current" data-theme="original" >HORIZONTE WEATHER</a>
+
+                            <div class="panel-footer">
+                                <span class="pull-right" style="color: #337ab7">מזג האוויר עדכני</span>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- LANGUAGE -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row" style="text-align: center; font-size: 20px; font-weight: bold; padding: 10px">
+
+                                    <div><p id="demo"></p></div>
+
+                            </div>
+                        </div>
+                            <div class="panel-footer">
+                                <span class="pull-right" style="color: #d9534f">זמן שחלף מקריסת הסכר</span>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עדכונים -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-exclamation-triangle fa-fw"></i> עדכונים
+                        </div>
+                        <div class="panel-body" dir=rtl id="block-scroll" dir=rtl style="text-align: right">
+									<h3 style="text-align: center !important; font-weight: bold">חתמ"צ 31/1 – 09:00</h3>					
+													
+												<br><br><span style="font-weight: bold">	נפגעים</span>
+												<br>
+▪	הרוגים: 99 – מתוכם 57 זוהו <br>
+▪	נעדרים: 259 <br>
+▪	ניצולים: 192<br>
+▪	מאותרים: 393<br>
+▪	חסרי בית: 176<br>
+<br>
+<br><span style="font-weight: bold">כוחות</span><br>
+<br>▪	320 כבאים 
+<br>▪	400 שוטרים צבאיים 
+<br>▪	133 חברי המשלחת הישראלית 
+<br>▪	כ20 מסוקים – 4 למשלחת הישראלית 
+<br>▪	צוותי כלבנים ממספר מחוזות (סנטה קתרינה, סנטוס ספיריטוס, סאו פאולו, ריו דה ז'ניירו, לאגוס)
+<br><br>
+													
+													
+													<h3 style="text-align: center !important; font-weight: bold">חתמ"צ 30/1 – 15:00</h3>
+													<br><span style="font-weight: bold">כוחות</span>
+													<br>133 חברי המשלחת הישראלית
+													<br>כ320 כבאים (הערכה, ע"פ כתבות מתווספות)
+													<br>
+													כ-1000 שוטרים נוכחים ברחבי העיר, מתוכם 317 שוטרים צבאיים שהועברו להעלאת תחושת הביטחון בעיר ומניעת ביזה.<br>
+													<br><span style="font-weight: bold">נפגעים</span>
+													<br>הרוגים: 84 - מתוכם זוהו 67
+													<br>נעדרים: 276
+													<br>מאותרים: 391
+													<br>ניצולים: 192
+													<br>חסרי בית: 135
+													<br><br><span style="font-weight: bold">כללי</span>
+													<br>לאור הניתוח ההידראולי הומלץ לרכז מאמץ  בגדה הדרומית במקטע שבין האכסניה לגשר
+													<br>כלל שכבות המידע תורגמו לשפה האנגלית
+													<br>
+
+													<h3 style="text-align: center !important; font-weight: bold">עדכון לתאריך 30.01 בשעה 10:00</h3>
+													<h4 style="font-weight: bold">כוחות</h4>
+													<h4>כבאים: 330
+													<br>
+													חברי המשלחת הישראלית: 133
+													<br>
+													<br>
+													שוטרים: 1000
+													<br>
+													400  מתוכם כ-שוטרים מהאקדמייה הצבאית של מינאס ז'ראייס
+													<br>
+													השוטרים באים במטרה לחזק את תחושת הבטחון ולייצר שיטור מונע בעיר.
+													</h4>
+													<br>
+													<h4 style="font-weight: bold">נפגעים</h4>
+													<h4>הרוגים: 84 – מתוכם זוהו 67
+													<br>
+													נעדרים: 276 – מתוכם 114 עובדי החברה VALE.
+													<br>
+													ניצולים: 391 – מתוכם 244 עובדי החברה VALE.
+													<br>
+													חסרי בית: 135.
+													<br>
+													באוטובוס היו 3 אנשים שנמצאו – הרוגים.
+													<br>
+													</h4>
+													<br>
+													<h4 style="font-weight: bold">אוכלוסייה</h4>
+													<h4>מספר מהנדסים ועובדי תחזוקה עצורים בחשד להונאת מסמכים ורשלנות.
+													<br>5 אנשים נעצרו לאחר קריסת הסכר. יש צורך לבדוק האם יש רשלנות ופזיזות.
+													<br>2 אנשים נוספים נעצרו על ניסיון ביזה.
+													</h4>
+
+													<h3 style="font-weight: bold">כללי</h3><br>
+													<h4>10 סכרים יעברו תהליך פירוק ויהיו משותקים ע"פ VALE.
+													<br>מזל"ט לא מורשה נפל היום באזור החיפוש ויכל לפגוע במחלצים.
+													<br>נאסר להשתמש במזל"טים באזור "החם" של החיפוש.</h4>
+													<br>
+													<br>
+
+												 <span style="text-align: right" dir=rtl><span style="font-weight: bold">
+													 <br>
+                            <h3 style="text-align: center; font-weight: bold">עדכון לתאריך 29.1 בשעה 11:00<h3>
+															<h4>
+																כוחות: 200 כבאים מטעם המחוז + 2 צוותים של כוחות ישראליים
+																<br>
+																כיום עובדים במתחם כ290 אנשי צבא , מתוכם 120 הוא מהמחוז מנאייס ז'ראייס, השאר הם ממחוזות : סאו פאולו, ריו דה ז'ניירו, סנטוס ספיריטוס, לאגוס וגויאס אשר עוזרים לכבאים במאמץ החיפושים.<br><br>
+																סה"כ יש כ393 חיילים מרחבי המדינה והמחוזות במאמץ החיפושים , מלבד הכבאים והמשלחת הישראלים.
+																<br>
+																<br>
+																 18 מסוקים – 4 למשלחת הישראלית
+															   <br>
+																 הרוגים: 65 – מתוכם זיהו 31
+															   <br>
+																 נעדרים: 279
+																 <br>	חסרי בית: 135
+																 <br>
+																 אוכלוסיה:
+																 נעצרו מספר אנשים במהלך ביזה של מבנים באיזור
+																 <br>
+																 <br>
+																 <h3 style="font-weight: bold">הנחיות רפואיות למשלחת</h3>
+																 	<ol style="font-weight: normal">
+																		<li>עבודה בבוץ/ מים מזוהמים – רק על ידי צוותים יעודיים עם ביגוד מתאים
+																			וחסין מים + שימוש במשקפי מגן/ מסכות פנים וכפפות.</li>
+																		<li>החלפות משמרת כל שעתיים.</li>
+																		<li>שימוש בביגוד יבש ולא רטוב לפני כניסה לבוץ.</li>
+																		<li>שטיפת חליפות במים זורמים וסבון, חשוב גם שימוש של אמצעי מיגון
+																			ל"שוטף" חליפות משומשות.</li>
+																		<li>שטיפות פנים וידיים לפני שתייה או אוכל באתר.</li>
+																		<li>מקלחת מים וסבון לפחות פעמיים ביום.</li>
+																	</ol>
+																</h4>
+																<br>
+																<br>
+																<h3>עדכון לשעה 22:12 28/01</h3>
+																<br>
+																<h4>
+                            		1. המשלחת קיבלה את השטח שבין הסכר שנפרץ לגשר הרכבת שקרס (נ.צ 20.140600, 44.130486) - בבדיקה ראשונית מצאנו הפרש גבהים של 70 מטר מנקודה לנקודה.
+                            		<br>
+																2. סכר 6 מנוטר באופן קבוע על ידי החברה , מתקבל עדכון טלפוני אחת לשעה על סטטוס יציבות הסכר.
+                            		<br>
+																3. ממתחם האכסניה חולצו 54 אנשים הערכה היא שאין שם נעדרים נוספים
+                            		<br>
+																4. כוחות : 18 מסוקים וכ-200 כבאים.
+                            		<br>
+																הרוגים: 65
+																<br>
+																נעדרים: 279
+																<br>
+																חולצו: 192
+                            		<br>
+																פונו לבתי חולים: 22
+                            		<br>
+		                            בהמשך לחששות על הימצאות שאריות חומרים מסוכנים בבוץ
+		                            מצאנו שאלות ותשובות בנושא
+		                            שורה תחתונה - אין חשש.
+                            		<br>
+																<br>
+                            		עדכון 27.01
+                            		<br>
+																<br>
+																1. סכר 6: עפ הודעת חברת הכרייה, גובה המים ירד והסכר איננו מהווה סכנה
+                            		<br>
+																2. תנאי השטח עלולים להטעות את הכוחות. כאשר פני השטח כביכול יבשים אך מתחת לפני השטח האדמה לחה.
+                            		<br>
+                            		3. תנועת הכוחות המחלצים לאזור האסון מתאפשרת באמצעות מסוק בלבד.
+                                לא ניתן להגיע בדרכים אחרות מסיבות של עבירות קשה.
+                            		<br>
+                            		</h4>
+                        		</span>
+
+                        </div>
+                      </div>
+
+                      <!-- FILES -->
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <i class="fa fa-file fa-fw"></i> קבצים
+                          </div>
+													<div class="panel-body">
+                              <a href="../חתמצ 30-9.docx" download><span dir=rtl>חתמצ 30-9</span></a>
+                          </div>
+													<div class="panel-body">
+                              <a href="../301.pdf" download><span dir=rtl>חתמצ 30.01</span></a>
+                          </div>
+													<div class="panel-body">
+                              <a href="../geoformi.pdf" download><span dir=rtl>ניתוח גיאומורפולוגי של סביבת השקעה וסחף בנהרות</span></a>
+                          </div>
+													<div class="panel-body">
+                              <a href="../satelliteimage.pdf" download><span dir=rtl>צילום לווין</span></a>
+                          </div>
+													<div class="panel-body">
+                              <a href="../newsalem.pdf" download><span dir=rtl>סקירת רשתות 29.01</span></a>
+                          </div>
+													<div class="panel-body">
+                              <a href="../situation.pdf" download><span dir=rtl>חתמצ 29.1</span></a>
+                          </div>
+                          <div class="panel-body">
+                              <a href="../neder.xlsx" download>קובץ נעדרים עדכני</a>
+                          </div>
+                          <div class="panel-body">
+                              <a href="../seker.pdf" download><span dir=rtl>הוראות הפעלת 'סקר חילוץ'</span></a>
+                          </div>
+                          <div class="panel-body">
+                              <a href="../media.docx" download><span dir=rtl>תמצ אוכלוסיה 28-1</span></a>
+                          </div>
+													<div class="panel-body">
+                              <a href="../nitur.pdf" download><span dir=rtl>סכר 6 - ניתור גיאוטכני</span></a>
+                          </div>
+                      </div>
+
+                      <!-- DISASTER IMPACT -->
+                      <div class="row">
+												<div class="panel panel-default">
+														<div class="panel-heading">
+																<i class="fa fa-photo fa-fw"></i> יחצה בשטח
+														</div>
+														<div class="panel-body">
+															<a target="_blank" href="../photos/soldiers1.jpg"><img src="../photos/soldiers1.jpg" width="33%" height="100%"></a>
+															<a target="_blank" href="../photos/soldiers2.jpg"><img src="../photos/soldiers2.jpg" width="33%" height="100%"></a>
+															<a target="_blank" href="../photos/soldiers3.jpg"><img src="../photos/soldiers3.jpg" width="33%" height="100%"></a>
+														</div>
+												</div>
+
+												<div class="panel panel-default">
+		                        <div class="panel-heading">
+		                            <i class="fa fa-photo fa-fw"></i> Destruction Site (לחץ להשוואה)
+		                        </div>
+		                        <div class="panel-body">
+		                          <a target="_blank" href="../pages/compare.html"><img src="../media2_files/before.jpeg" width="50%" height="50%"></a>
+															<a target="_blank" href="../pages/compare.html"><img class="image2" src="../media2_files/after.jpeg" width="50%" height="50%" style="float : right;"></a>
+		                        </div>
+		                    </div>
+
+											</div>
+
+                  <script>
+                  initComparisons();
+                  </script>
+                </div>
+
+
+                <!-- DICTIONARY -->
+                <div class="col-lg-4">
+
+                    <!-- DESTRUCTION SITE -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-photo fa-fw"></i> Destruction Site (Click to enlarge)
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <a target="_blank" href="../photos/mainmap.jpeg"><img src="../photos/mainmap.jpeg" width="100%" height="100%"></a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- PHOTO -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-photo fa-fw"></i> Photo
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <a target="_blank" href="../photos/salempic10.jpg"><img src="../photos/salempic10.jpg" width="100%" height="100%"></a><br><br>
+													<p dir="rtl" style="text-align: right">שחור - חילוץ ברזילאים<br>כחול - סלולר טרום האירוע<br>סוכריה כחולה - חילוץ כוחותינו
+													</p>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-camera fa-fw"></i> Video
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+													<video width="100%" height="100%" controls>
+                            <source src="../geoformi.mp4" type="video/mp4">
+													</video>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+										<div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-photo fa-fw"></i> Photo
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <a target="_blank" href="../photos/salmepicc.jpg"><img src="../photos/salmepicc.jpg" width="100%" height="100%"></a><br><br>
+													</p>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

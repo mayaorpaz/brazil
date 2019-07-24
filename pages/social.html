@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" pe="image/png" href="../photos/favicon.ico"/>
+
+    <title>Brumadinho</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+    .cntr {
+      text-align: center
+    }
+    </style>
+
+    <script language="JavaScript">
+      <!--
+      function worldClock(zone, region){
+      var dst = 0
+      var time = new Date()
+      var gmtMS = time.getTime() + (time.getTimezoneOffset() * 60000)
+      var gmtTime = new Date(gmtMS)
+      var day = gmtTime.getDate()
+      var month = gmtTime.getMonth()
+      var year = gmtTime.getYear()
+      if(year < 1000){
+      year += 1900
+      }
+      var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August",
+      				"September", "October", "November", "December")
+      var monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31")
+      if (year%4 == 0){
+      monthDays = new Array("31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31")
+      }
+      if(year%100 == 0 && year%400 != 0){
+      monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31")
+      }
+
+      var hr = gmtTime.getHours() + zone
+      var min = gmtTime.getMinutes()
+      var sec = gmtTime.getSeconds()
+
+      if (hr >= 24){
+      hr = hr-24
+      day -= -1
+      }
+      if (hr < 0){
+      hr -= -24
+      day -= 1
+      }
+      if (hr < 10){
+      hr = " " + hr
+      }
+      if (min < 10){
+      min = "0" + min
+      }
+      if (sec < 10){
+      sec = "0" + sec
+      }
+      if (day <= 0){
+      if (month == 0){
+      	month = 11
+      	year -= 1
+      	}
+      	else{
+      	month = month -1
+      	}
+      day = monthDays[month]
+      }
+      if(day > monthDays[month]){
+      	day = 1
+      	if(month == 11){
+      	month = 0
+      	year -= -1
+      	}
+      	else{
+      	month -= -1
+      	}
+      }
+      if (region == "SAmerica"){
+      	var startDST = new Date()
+      	var endDST = new Date()
+      	startDST.setMonth(9)
+      	startDST.setHours(0)
+      	startDST.setDate(1)
+      	var dayDST = startDST.getDay()
+      	if (dayDST != 0){
+      		startDST.setDate(22-dayDST)
+      		}
+      		else{
+      		startDST.setDate(15)
+      		}
+      	endDST.setMonth(1)
+      	endDST.setHours(11)
+      	endDST.setDate(1)
+      	dayDST = endDST.getDay()
+      	if (dayDST != 0){
+      		endDST.setDate(21-dayDST)
+      		}
+      		else{
+      		endDST.setDate(14)
+      		}
+      	var currentTime = new Date()
+      	currentTime.setMonth(month)
+      	currentTime.setYear(year)
+      	currentTime.setDate(day)
+      	currentTime.setHours(hr)
+      	if(currentTime >= startDST || currentTime < endDST){
+      		dst = 1
+      		}
+      }
+
+
+      if (dst == 1){
+      	hr -= -1
+      	if (hr >= 24){
+      	hr = hr-24
+      	day -= -1
+      	}
+      	if (hr < 10){
+      	hr = " " + hr
+      	}
+      	if(day > monthDays[month]){
+      	day = 1
+      	if(month == 11){
+      	month = 0
+      	year -= -1
+      	}
+      	else{
+      	month -= -1
+      	}
+      	}
+      return monthArray[month] + " " + day + ", " + year + "<br>" + hr + ":" + min + ":" + sec + " DST"
+      }
+      else{
+      return monthArray[month] + " " + day + ", " + year + "<br>" + hr + ":" + min + ":" + sec
+      }
+      }
+
+      function worldClockZone(){
+      document.getElementById("SaoPaulo").innerHTML = worldClock(-3, "SAmerica")
+
+      setTimeout("worldClockZone()", 1000)
+      }
+      window.onload=worldClockZone;
+
+      //-->
+      </script>
+      <script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Brazil Dam Collapse - Brumadinho</a>
+            </div>
+            <!-- /.navbar-header -->
+            <a class="weatherwidget-io" href="https://forecast7.com/en/n23d59n46d82/horizontal-park/" data-label_1="Belo Horizonte" data-label_2="WEATHER" data-theme="blue-mountains" >BELO HORIZONTE WEATHER</a>
+
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+
+                        <li class="divider"></li>
+                        <li>
+                            <a target="_blank" class="text-center" href="https://www.google.co.il/search?q=brumadinho&source=lnms&tbm=nws&sa=X&ved=0ahUKEwju4-D124zgAhWMsqQKHRTpD18Q_AUIECgD&biw=1200&bih=664">
+                                <strong>See All News</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Homepage</a>
+                        </li>
+                        <li>
+                            <a href="airports.html"><i class="fa fa-plane fa-fw"></i>Airports</a>
+                        </li>
+                        <li>
+                            <a href="hospitals.html"><i class="fa fa-h-square fa-fw"></i>Hospitals</a>
+                        </li>
+                        <li>
+                            <a href="poi.html"><i class="fa fa-plus fa-fw"></i>Points of Interest</a>
+                        </li>
+                        <li>
+                          <a href="social.html"><i class="fa fa-share-square fa-fw"></i>Social Networks</a>
+                        </li>
+                        <li>
+                          <a href="upload-updates.html"><i class="fa fa-share-square fa-fw"></i>Upload updates</a>
+                        </li>
+                        <!--<li>
+                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="blank.html">Blank Page</a>
+                                </li>
+                                <li>
+                                    <a href="login.html">Login Page</a>
+                                </li>
+                            </ul>-->
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Social Media</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-info-circle fa-fw"></i> סקירת רשתות
+                        </div>
+
+
+                        <div class="panel-body" >
+
+                         <div class="col text-center p-3 bg-dark text-white text-center" >
+
+
+          <!-- title -->
+
+
+          <p style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><strong><span style="font-size: 18pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Analysis of findings from media monitoring and communication</span></strong></p>
+          <p style="line-height: 1.2; margin-top: 15pt; margin-bottom: 0pt; text-align: center;"><strong><span style="font-size: 18pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap">Contents:</span></strong></p>
+
+          <!-- index -->
+          <a href="#backgroundsocial"><p style="line-height: 1.2; margin-top: 15pt; margin-bottom: 0pt; text-align: center;"><strong><span style="font-size: 18pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap">1: Background</span></strong></p></a>
+          <a href="#analysis3"><p style="line-height: 1.2; margin-top: 15pt; margin-bottom: 0pt; text-align: center;"><strong><span style="font-size: 18pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap">2: Analysis - 29/01</span></strong></p></a>
+          <a href="#analysis2"><p style="line-height: 1.2; margin-top: 15pt; margin-bottom: 0pt; text-align: center;"><strong><span style="font-size: 18pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap">2: Analysis - 27/01</span></strong></p></a>
+          <a href="#analysis1"><p style="line-height: 1.2; margin-top: 15pt; margin-bottom: 0pt; text-align: center;"><strong><span style="font-size: 18pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap">3: Analysis - 26/01</span></strong></p></a>
+          <hr>
+
+
+<!-- background -->
+<br><br><p id="backgroundsocial" style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; background-color: #ffffff;"><span style="font-size: 16pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Background</span></p><br>
+<ul style="margin-top: 0pt; margin-bottom: 0pt;">
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.9pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The collapsed dam is part of a system of dams that built in such a way that the collapse of one can cause a "domino" effect, meaning that the danger has not yet passed.</span></li>
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.9pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Most of the injured people in the disaster event was vale workers, who live in the nearby town, Brumadhino. </span></li>
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.9pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This is a second disaster event of dam collapse. A similar incident occurred in 2015, that cussed injury and damage. The dam in 2015 was also own by vale (same company like the collapse in 2019). </span></li>
+</ul><br>
+
+<!-- population behaviour -->
+<p style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 16pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Population Behaviour</span></p><br>
+<ul style="margin-top: 0pt; margin-bottom: 0pt;">
+<li style="list-style-type: disc; font-size: 15pt; font-family: 'Noto Sans Symbols'; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><strong><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Anger </span></strong><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">towards the company that own and ran the dam and towards the government, Accusations of corruption at the expense of human life and the environment.</span><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Further to - Extensive occupation of fines imposed on the company.</span></li>
+<li style="list-style-type: disc; font-size: 15pt; font-family: 'Noto Sans Symbols'; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Extensive mobilization for volunteering and fundraising on the part of the population alongside a search for an organizing factor and the beginning of an initial organization.</span></li>
+</ul><br>
+
+<!-- functioning economy and services -->
+<p style="line-height: 1.295; margin-top: 20pt; margin-bottom: 8pt; text-align: center;"><span style="font-size: 16pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Functioning of the economy and services to the citizen</span></p>
+<ul style="margin-top: 0pt; margin-bottom: 0pt;">
+<li style="list-style-type: disc; font-size: 16pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Posted on social networks information regarding the health services that works in the area, classified according to emergency and community medicine. </span></li>
+<li style="list-style-type: disc; font-size: 16pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Posted phone numbers for Victims of anxiety.</span></li>
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The sanitation company reported that the metropolitan population of Belo Horizonte Was not affected in terms of water supply.</span></li>
+</ul><br>
+
+<!-- evacuation -->
+<p style="line-height: 1.295; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size: 16pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Evacuation of population</span></p>
+<ul style="margin-top: 0pt; margin-bottom: 0pt;">
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">About 24,000 people evacuated from their home because of a fear that another dam will collapse (Dam 1) - The evacuation is conducted in accordance with existing emergency plans.</span></li>
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Some of the residents were allowed to return to their homes. </span></li>
+</ul><br>
+
+<!-- rumors -->
+<p style="line-height: 1.295; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size: 15pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Unverified information/Rumors </span><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&nbsp;</span></p>
+<ul style="margin-top: 0pt; margin-bottom: 0pt;">
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Claims against the company managing the dam for blocking roads and preventing the arrival of rescue forces and aid equipment.</span></li>
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Disorganization and proper management of donations (non-receipt of donations due to lack of space and storage restrictions).</span></li>
+<li style="list-style-type: disc; font-size: 13.9pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Lack of clarity regarding the continued existence of danger and the collapse of additional dams.</span></li>
+</ul><br>
+
+<!-- guidelines -->
+<p style="line-height: 1.295; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size: 16pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Guidelines for the population</span></p>
+<ul style="margin-top: 0pt; margin-bottom: 0pt;">
+<li style="list-style-type: disc; font-size: 16pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This morning (27/01) at 05:30 There was an alarm emanating from a system warning of an increase in the water level (due to the fear of another dam will collapse. As a precaution, the population in the area was evacuated to pre-determined meeting points as part of an emergency plan.</span></li>
+<li style="list-style-type: disc; font-size: 16pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">There is a need for information and instructions during an alarm, which is expressed in the discourse and exchange of information between residents on Facebook.</span></li>
+</ul><br>
+<hr>
+
+<!-- analysis3 -->
+<h1 id="analysis3" style="padding: 30px">Analysis 29/01<h1>
+
+  <h3 style="text-align: center" dir=rtl>סקירת רשתות חברתיות 29 לינואר 2019  (מעודכן ל10:00 שעון ישראל)</h3><br>
+  <br><br>
+  <a href="../newsalem.pdf" download><span style="font-size: 100px; margin-bottom: 50px" dir=rtl>סקירת רשתות 29.01</span></a>
+  <br><br><br><br>
+<hr>
+
+<!-- analysis2 -->
+<h1 id="analysis2" style="padding: 30px">Analysis 27/01<h1>
+
+  <h3 style="text-align: center" dir=rtl>סקירת רשתות חברתיות 27 לינואר 2019  (מעודכן ל24:00 שעון ישראל)</h3><br>
+  <h4 style="text-align: right" dir=rtl>תמצית:</h4>
+  <ol style="text-align: right" dir=rtl>
+    <li>ההיבט הבולט ביותר בשיח- הכעס על החברה והממשל, על שהזניחו ולא דואגים לסביבה ולביטחונם של האנשים.</li><br>
+    <li>ניכרת הירתמות לפעולה – רצון להתנדב ולתרום, אולם לא תמיד ברור מה דרוש ואיך להתארגן. מסרים סותרים רבים אף מקשים עוד יותר על ההתארגנות העצמית.</li><br>
+    <li>פערים מרכזיים בעיני התושבים: טענות כי לא עובדים מספיק קשה על החילוץ (בעניין זה ישנן הרבה ציפיות מן המשלחת הישראלית), מידע מידע מידע  (ולא רק התרעה מפני סכנת חיים).</li><br>
+    <span dir=rtl style="text-align: right">
+    <h3 style="text-align: center">חילוץ, הצלה וטיפול באוכלוסייה</h3><br>
+    <p>במוקדי הפעולה: בין האזורים בסיכון הם Parque דה Cachoeira, Pires ו Bairro נובו Progresso מיקוד החיפושים: בניין ליד מסעדת Vale וגם קהילת Parque das Cachoeiras
+חשש מגשמים צפויים (ביום שני), אשר עלולים להקשות על מאמצי החיפוש.
+</p>
+  <h3 style="text-align: center">פינוי אוכלוסייה</h3><br>
+  <p>כ 24,000 פונו מבתיהם, מחשש לפריצת סכר נוסף באזור, בהתאם לתכנית פעולה לשעת חירום.
+לדברי מערך הכבאות, עיקר המאמץ כרגע מופנה לפינוי אוכלוסייה, על כן מאמצי החילוץ של קורבנות סכר 1 הושעו.
+
+תושבים משכונת   Pires  מתחילים להגיע ל Brumadinho's Mother Church</p>
+<br>
+<img style="width: 100%; height: 100%" src="https://lh3.googleusercontent.com/Xq3xrcgA5bAbuEa8N2jo7mTDo7T_leYAIvByKOiSFb8mpYuiS0CVA13vsHMWX0nZzSjlE2n7vhdFTgmBjc3RH5bzH8e4yvwbTT_ujvwNTNqHd3sknZbfV5zwXfzQJerYBbBpeA_DD2H9rFVgew">
+<p dir=rtl style="text-align: center">Residents begin to gather and bring food to UBS of Parque da Cachoeira in the Brumadinho region
+</p><br><br>
+<img style="width: 100%; height: 100%" src="https://lh5.googleusercontent.com/NsmeLz2ZuphGi4F4mpfu5ealhBPtPAL1h-oiUSN_RqqHmqmESPj-fSaWeI5S2W2Yn4FrruhWBwVHY6LyPaASNBZTDXuQD1JxRwbp5jMLGtB7goV__xBIwuAJWspP6jTl5dtibwQ-2wS6OcqBGA">
+<br><br>
+<h4>באזור סכר 6 – פורסם כי במים ישנן גם שאריות עופרת. האוכלוסייה פונתה, אך אושר כבר לחזור לבתים (אם כי נראה שחלק מהתושבים מעלים שאלות ומפקפקים במידת הביטחון לחזרה). </h4>
+<br>
+<h3 style="text-align: center">הוקמו מרכזי משפחות, מאוישים ע"י מתנדבים:
+</h3>
+<img style="width: 100%; height: 100%" src="https://lh5.googleusercontent.com/EAi4F2zb1zISLD8tQpEWEX5jnxmYwLJu_GbzMbdp1cXZHnqhZN9v7ZK5M1G_C4BSGjvb0Ie_ys_O3Um6edpDVy7sEoA39kPp5fBbmULhmh4RH6BqpGA9Ml15dgbQlFpgdQcFwj_6SUsHe-YMjA">
+<p>מס טל לבירורי משפחות: 0800-285-7000, 08000-821-5000, 100</p>
+<br><br>
+<h3 style="text-align: center">תרומות</h3>
+<br>
+<p>העירייה קוראת לתרומות ומדייקת את הצורך:
+</p><br>
+<img style="width: 100%; height: 100%" src="https://lh5.googleusercontent.com/NVt57fDrATOLjUlzPnsIuGs7QBsXOHU-wIPK1Pcy-mufmvIznn0lcdAro5kfxC099pcXf_35PJdHn38aJ7CpafhdRgjXdzIvAexEAhA">
+<br><br>
+<p>מצד שני, ההגנה האזרחית (civil defense) השעתה את תהליך קבלת התרומות והכריזה שאין יותר צורך להעביר תרומות.
+המסרים הסותרים בנוגע לתרומות מייצרים בלבול בקרב התושבים.
+נוסף על כל אלה, מתפרסם סרטון ברשתות החברתיות וכן הודעות על כך שהחברה VALE לא נותנת לעבור בדרכים ולהוביל ציוד.
+</p>
+<br><br>
+<h3 style="text-align: center">מידע והסברה לציבור
+</h3>
+<br>
+<p>פורסמה התרעה לציבור מטעם ההגנה האזרחית לקראת התגברות הגשמים.
+כמו כן, יצאה הודעה שרמת הסיכון ליד סכר העמק ירדה לרמה 1 ואנשים יכולים לשוב הביתה ומי שביתו נפגע יוכל להישאר במקלטים/ במלונות. תגובות האזרחים להודעה זו מבטאות חוסר אמון:
+</p><br>
+<img style="width: 100%; height: 100%" src="https://lh5.googleusercontent.com/PH4Hr-GJ-hzZAOTmwV-jM9t0mdxpCEv_e5VJPKoG0gkErx2ou-Sb6z9yX9YtbJTv45FhzMKAXFPbYHQ0X1rmDbGrr8RSZzDlImArN6I">
+<br>
+<h4 class="cntr">פורסמה אזהרה ברשתות החברתיות:
+</h4><br>
+<img style="width: 100%; height: 100%" src="https://lh4.googleusercontent.com/-N8IoRXEfGW0z95vT_JyklmP12v__7vw_J_eiGHQQ7C9f2KHwFyOCiD3OTZJkLhKvYSs4iA2Tp9sW_7sQWjtBLXDeJAIoS1ecv9wSRoZ"><br>
+<p>המסר: מסוכן להתקרב לגדות הנהר. בתגובות לכך ניתן למצוא חוסר שביעות רצון של התושבים, הזקוקים ליותר מידע ופירוט לגבי המתרחב, הרבה מעבר לאזהרה או להתרעה שהייתה בשעות הבוקר המוקדמות (יום א' – בשל עליית מפלס המים וחשש מהתפרצותו של סכר נוסף).</p><br>
+<img style="width: 100%; height: 100%" src="https://lh5.googleusercontent.com/PHbsuYDYsBDC0eLmHhtfbhSSSahcNDFiFGW9GmGoxHHGRggT9OvVTKYI-YvlpBIBVNAD9nAuDebrgM36nQNt7J30aUtruijiIsfv_wBm"><br>
+<p>מידע לתושבים בדבר שירותי הראיות באזור:  חלוקה בין מיון חירום – לנפגעי האירוע ומיון "רגיל" – אשר יתרכז במרפאות בקהילה. כמו כן, ישנם מספרי טלפון לפניות נפגעי חרדה. </p><br><br>
+<h3 class="cntr">התנהגות אוכלוסייה</h3><br>
+<img style="width: 100%; height: 100%" src="https://lh6.googleusercontent.com/1QiL3Sz6aVesIWML0ookEOwwoww7i1PlGu_vr5MCoN5NP1zLm1vLjDzmBzNqJ7BAHP80zTHlilsbeISXr4yLV_nLaa61aZTdCBs_GCKr"><br>
+<p>לצד תמונה זו נכתב כי הבחור יושב על גג ביתו ההרוס כדי לשמור על תכולתו מפני בוזזים. </p><br><br>
+<h3 class='cntr'>התנדבות</h3><br>
+<p>מתנדבים מחלקים מים לתושבים באזורים הפגועים</p><br>
+<img style="width: 100%; height: 100%" src="https://lh6.googleusercontent.com/i-yMC0kalmbMTqnah8hTtnDRgjufHKilvzhtqZ2MhPMHjrdkilRDz4T6w3Ih9HAv2uJCcPGiD_dFoylTJgYgi4VTdZ6Hqct7UptvjVbB"><br>
+<img style="width: 100%; height: 100%" src="https://lh5.googleusercontent.com/V1ReOPK8GPc3A0kNM3y4x3cLKBE10r31M2HuSR8TIeO2H9ph_BcQO6kg57sCZiaHa8Of91hrioeWKjTlxL8Jn09ll5_bh83gT0LM2NM_"><br>
+<p>מתנדבים מסייעים למשפחות הקורבנות, מעבירים מזרונים ומזון וכן מגיעים לתרום דם. </p><br><br>
+<h1 class='cntr'>המשלחת הישראלית
+</h1><br>
+<p class='cntr'>מוזכרת במקומות רבים, הן בתקשורת, הן בהודעות רשמיות והן בשיח בין האנשים. יש ציפיות רבות וגבוהות. בין היתר, הרשות המקומית הודעה שמחכים לציוד מישראל בעזרתו ירוקנו את מאגרי המים באחד מהסכרים.</p><br><br>
+<img style="width: 100%; height: 100%" src="https://lh6.googleusercontent.com/TGwYZ1GnW_Wno5NxGgaIRN8UvCer8zsyCSP0FaJZ3beHiahxvbo3JrUSRuDfTCROougqqiBBMzxT6EvXATXS4-fFTPX7P-eYVVl6scOd"><br>
+<img style="width: 100%; height: 100%" src="https://lh4.googleusercontent.com/MX_cUtXybGVzPmkQCIbWPaOlyoqdyLCsKpAUF0R_s3ell00J796-bZPFMS2Z3OiaCOWOxUJw9xHVrZGW0j7o0iItX6Y-Ty_6N4GVjIsQ"><br><br><br>
+<h3 class='cntr'>כללי</h3><br>
+<p>עיסוק נרחב בגורלם של בעלי החיים באזור – קריאה לדאגה גם להם, סיקור בתקשורת של חילוצי בע"ח</p><br><br>
+<img style="width: 100%; height: 100%" src="https://lh4.googleusercontent.com/0kKkwGfTU3d95LtHnFUZxOLoTd7Yel0CH4YPbGkoHgZZP4rwuVnBQwzponyl2_qeE0QM6CMEOgvkr91ODh_ZeKo7r8VZ1-d9rYIQp6qP"><br>
+<img style="width: 100%; height: 100%" src="https://lh3.googleusercontent.com/4X4M9jRg_aU93q6NxyCgmdv2FuRnWP3aNVH6rgleiB9sPy4eKufPhmP9qS4IBvoN235D4fBtuuyax4O6ymkV2aAxoxDZpoX5wKl_5IvTAnLsG8D70SeYCqp1xKKbaUIWeOHKD1B1Ccg1BGqt1w"><br><br><br>
+<h3 class='cntr'>חיפושים בגוגל</h3><br><br>
+<img style="width: 100%; height: 100%" src="https://lh3.googleusercontent.com/2u80gJ34XYfFRNJgCDzm5pmM9owvTCykHGJe3wyC4D-vWat0QqfwdKeVluM_ZU9EeagxCWsQ_T4Ve85tkThmrsRQMom-cpAw1cRN6eAl"><br>
+<img style="width: 100%; height: 100%" src="https://lh3.googleusercontent.com/rA2GTVMGqSje00wvqOIenJjNrj9z1LS4PuJ_vLNoziYOEaNAhnISdc_65YHweCb_DIm6A62bYOimDZ9Ivad906vquNnsKl3K2ZJo1cAc9zOXuAHbPPQbHeR8H06pECb6E48t-klMeXxCy2UXAw"><br>
+<p>אם כי בהתבוננות כללית, החיפושים הפופולאריים ביותר במדינה עדיין עוסקים במשחקי כדורגל..</p>
+<br><br>
+<h3 class='cntr'>עוד...מקורות מוצלחים לשימוש:</h3>
+<span class='cntr'><a  href="http://www.infocors.com.br/2019/01/bombeiros-confirmam-34-mortes-em.html"><span class='cntr'>http://www.infocors.com.br/2019/01/bombeiros-confirmam-34-mortes-em.html</span></a></span><br><br>
+<h3 class='cntr'>צילומים של השטח – לפני ואחרי:</h3>
+<a href="https://g1.globo.com/mg/minas-gerais/noticia/2019/01/25/antes-e-depois-veja-imagens-do-rompimento-de-barragem-da-vale-em-brumadinho-mg.ghtml">https://g1.globo.com/mg/minas-gerais/noticia/2019/01/25/antes-e-depois-veja-imagens-do-rompimento-de-barragem-da-vale-em-brumadinho-mg.ghtml</a><br><br>
+<h3 class='cntr'>עדכונים שוטפים:</h3>
+<a href="https://g1.globo.com/mg/minas-gerais/ao-vivo/barragem-da-vale-se-rompe-em-brumadinho-na-grande-bh.ghtml">https://g1.globo.com/mg/minas-gerais/ao-vivo/barragem-da-vale-se-rompe-em-brumadinho-na-grande-bh.ghtml</a><br><br>
+<h3 class='cntr'>אתר המשטרה – רשימות הנעדרים:</h3>
+<a href="https://www.policiacivil.mg.gov.br/noticia/exibir?id=1717807&=Brumadinho%3A-lista-de-desaparecidos%2C-localizados-e-identificados-&fbclid=IwAR2KJ9BU3x9bitbnFl0_k3JcTCBkGS6SfYDuBFXfSX93acLId6VNC3uc9RY">https://www.policiacivil.mg.gov.br/noticia/exibir?id=1717807&=Brumadinho%3A-lista-de-desaparecidos%2C-localizados-e-identificados-&fbclid=IwAR2KJ9BU3x9bitbnFl0_k3JcTCBkGS6SfYDuBFXfSX93acLId6VNC3uc9RY</a><br><br>
+<h3 class='cntr'>האשתאג מובילים:</h3>
+<h4 class='cntr'>‎#BrumadinhoMG, ‎#BrumadinhoSOS, ‎#BrumadinhoChegadeimpunidade</h4>
+
+
+
+
+
+
+
+  </span>
+
+
+  <!-- guidelines
+  <p style="line-height: 1.295; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size: 16pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Guidelines for the population</span></p>
+  <ul style="margin-top: 0pt; margin-bottom: 0pt;">
+  <li style="list-style-type: disc; font-size: 16pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This morning (27/01) at 05:30 There was an alarm emanating from a system warning of an increase in the water level (due to the fear of another dam will collapse. As a precaution, the population in the area was evacuated to pre-determined meeting points as part of an emergency plan.</span></li>
+  <li style="list-style-type: disc; font-size: 16pt; font-family: 'Noto Sans Symbols'; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 13.999999999999998pt; font-family: inherit; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">There is a need for information and instructions during an alarm, which is expressed in the discourse and exchange of information between residents on Facebook.</span></li>
+  </ul><br>
+
+  from facebook
+  <p dir=ltr style="line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: -36pt; padding: 0pt 0pt 0pt 36pt;"><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">From Facebook: </span><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Pameia Ferraz &ndash; "I want more info about how to volunteer. I found a link which doesn&rsquo;t work, and I would like to know if there will be volunteer camps outside the country. Thanks! </span></p><br><img  style="float: right; height: 100%; width: 100%; margin-bottom: 20px"  src="../photos/image1.png"><br><br>
+
+  <ul style="margin-top: 0pt; margin-bottom: 0pt;">
+  <li dir=ltr style="list-style-type: disc; font-size: 15pt; font-family: 'Noto Sans Symbols'; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 15pt; font-family: inherit; color: #212121; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Actively search for missing loved ones by publishing pictures, descriptions and contact details. </span></li><br>
+</ul><br><img  style="float: right; height: 100%; width: 100%; margin-bottom: 50px"  src="../photos/image2.png" />-->
+
+      <!-- analysis 1 -->
+      <p style="color: transparent">hello</p>
+      <hr>
+            <h1 id="analysis1" style="padding: 30px; text-align: center">Analysis - 26/01</h1>
+            <h3 style="text-align: center" dir=rtl>תמצית הדברים – 26.01.2019 שעה 22:00 שעון ישראל (טוויטר, פייסבוק , יו טיוב)</h3>
+
+          </div>
+          <br>
+          <ol dir=rtl>
+            <li style=" text-align: right">הנקודה הבולטת ביותר בשיח ברשתות הנה הזעם שיש כלפי החברה בעלת הסכר וכן כלפי הממשל. האשמות רבות בשחיתות ובעדפת כסף על חשבון חיי אדם ואיכות הסביבה.
+            </li>
+            <br>
+            <li style=" text-align: right">מעבר לכך, ניתן למצוא סרטונים של חילוצים (בעיקר ביו טיוב), תמיכה בכוחות החילוץ, הודעות לציבור (מעט) וכן קריאה לאיסוף תרומות והתנדבות.
+            </li>
+            <br>
+            <li style=" text-align: right">ניתן למצוא דיווחים על פינוי אוכלוסייה מהחלק התחתון של העיר, אולם לא קיים הרבה מידע על האופן שבו התבצע ועל התנהגות האוכלוסייה.
+            </li>
+            <br>
+            <li style=" text-align: right">האשטאג בולטים:
+              <img src="https://lh5.googleusercontent.com/YoG_GmOXQR8b9GkY-emzBNGfii8ObpPXhjyL6sx8So0ckiQWIiKM3ambGRb4-cW3zw_aAqU_kbbkgDY-XSyzf8jSIly9busovdhI_F8hHQieunTBf-r3ha51XmCOkj6rqffknSjDb8LX0Qinzw"
+            </li>
+            <br><br>
+            <li style=" text-align: right">חיפושים בגוגל: הרבה חיפושים על נושאים הקשורים לאירוע. ניתן לראות כי היקף החיפושים קשור למידת הקרבה למקום, כך שבאזורים הסמוכים היו יותר חיפושים הנוגעים לאירוע עצמו, לעיר בה התחולל ולחברה בעלת הסכר.
+            </li>
+          </ol>
+
+                         <div class="col text-center p-3 bg-dark text-white text-center" dir=rtl>
+            <h3>נתוני גוגל טרנדס:</h3>
+
+          <br>
+
+            <h3 class="text-center" style="text-align: right" dir=rtl>
+
+          </h3>
+          <img style="float: right; width: 100%; height: 100%"  src="https://lh4.googleusercontent.com/eqyvswwzgn0caesBSFOh-lUQzxZ8LVebIcUubRCelGCAZlsxt-bZjj-hAZX2nRV0cmvSnRqFexkT8J-K3iVmQMm00SsRSTbBO-FoRbVE8R7LmyOASm8nev_wEO4l-wc-1yvX2FEI6oMDgKy7FA">
+          <img style="float: right; width: 100%; height: 100%"  src="https://lh5.googleusercontent.com/7eOTGIBpIRb7-6EcIAPmHnl_bTV55zOkkYMgAILSRYJjAeTBFAbkmeGCTYulvoY6VIufg8A5KOAkQKnbcWraUmd_O-o59BfyPuhUxD6nOLbhfKoGa9EKGuo6dm7SxrzjgadIyDhDFjTmwziFmg">
+          <img style="float: right; width: 100%; height: 100%"  src="https://lh6.googleusercontent.com/lt3oownHR5bAjkUzUgyph0hlK7tVS54Ir1nVqFaD5oZhkzG0Ymrhz4adPgUA0AoJXM6RDR_-XycjSkJcYLCHky6M56MNqEl1uBeSJjHq7d04stlKy7i-NM345VSIgHxKZ_yAWvgAMTQKcLcoJg">
+
+
+                <div class="col-lg-12">
+                    <!-- /.panel -->
+                        <div class="panel-body" dir=rtl>
+
+                         <div class="col text-center p-3 bg-dark text-white text-center" dir=rtl>
+            <h3>דוגמאות לשיח בקטגוריות שהוזכרו:</h3>
+
+          </div>
+          <br>
+          <ol >
+
+
+            <li style=" text-align: right">גיוס מתנדבים מהסביבה ואיסוף תרומות:
+              <img  style="float: right; width: 100%; height: 100%"  src="https://lh4.googleusercontent.com/StEQxMNxK5LrzoH2m2dJYxYT-bIZwilnxZH6VGa-R06nYTiXUlK6QnOZa_uujZeS74airsGBG1BdpfAf_nLrmUqe5aGJM5yopdDRqNT0abMqt-9egMpzh3EDbwMUWsmkyC_SdokRxI3-q0d6Uw">
+            </li>
+
+              <img  style="float: right; width: 100%; height: 100%"  src="https://lh4.googleusercontent.com/XmszH9ekSdA3eq4bIKxoWjegvf1Nwa0WyMMWRgKMT3fQK_3iy6y0hwKrewu-s7DLT4I1BH0kpdgPQAMlA875zGc7vhRV843p-KRS1Eoqgu5nIRiBoYS23jIbo-8pzAacFVDZevkgRzss3Go9sw">
+
+            <img style="float: right; width: 100%; height: 100%" src="https://lh3.googleusercontent.com/kr4gkEvSidlFYDh55Ov5i5G7i0-m_1s0f-ch5ulbBQd1WZ3e4jP1RmSfyumcLtTdGiS5DlGUqoSP8D6JcA6BJiDWqJrD7NQRPtzijlGj">
+<img style="float: right; width: 100%; height: 100%" src="https://lh6.googleusercontent.com/UB9IuURr3gNzb7LFI4VAfyWsHhAmqT0VfOJD_aNvMU5FI7HiWop-Wl-BbcFy4h2x4lxLFlvKU6okUuWC4hFO_cLgw3Pw9qij5uVmMmGW">
+<h4 style="text-align: center; padding: 10px" dir=rtl>כאשר העץ האחרון נפל, כאשר הנהר האחרון התייבש, כאשר הדג האחרון הוא נתפס, תוכל להבין כי הכסף לא אכל</h4>
+<img style="float: right; width: 100%; height: 100%" src="https://lh4.googleusercontent.com/UpTJHBYUN0C-QtidZHI16BA4xl_eD7qiJvN-NEMd6r9ljdbSMx_Wz3mxvrMuGajvOuHOijxHfM9DB5Z1TzXH7CQPh49k8sOtg-ASJfhq">
+<h4 style="text-align: center; padding: 10px" dir=rtl>הטרגדיה חוזרת", "מדובר בפשע סביבתי"
+</h4>
+<img style="float: right; width: 100%; height: 100%" src="https://lh3.googleusercontent.com/x06A_jABi14r4SqToN-_vij_eYlq5bLBolln050wTLkNLLYfwWCDKswAGQpKgDKhEPJzAh9f1_rK8SRZu3EOPEHc_r6H5OCRaKPwmAl5">
+<hr>
+    </div>
+    <h3 class="text-center" dir=rtl>חיזוק כוחות ההצלה:
+</h3>
+<img style="width: 100%; height: 100%" src="https://lh4.googleusercontent.com/npASOQSZW3Qf2JtXH9pftpnzgmyuhZo5tlZMvUW4wcmFcN4S4fF88q6Sz4wS8SbPCJderWxmY_3EtqEdw2NySC-Y9gGxJN5XnHoZc2Bb">
+          </ol>
+
+
+                    <!-- /.panel -->
+
+                    <!-- /.panel -->
+
+                <!-- /.col-lg-8 -->
+
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
